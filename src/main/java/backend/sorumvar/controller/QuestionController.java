@@ -29,4 +29,9 @@ public class QuestionController {
         questionService.deleteQuestion(id);
     }
 
+    @PutMapping
+    public Question updateQuestion(Question question){
+        return questionService.updateQuestion(question);
+    }
+
 }
