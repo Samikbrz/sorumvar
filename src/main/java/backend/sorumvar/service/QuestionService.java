@@ -16,7 +16,7 @@ public class QuestionService {
     @Autowired
     private QuestionRepository questionRepository;
 
-     public List<Question> getAllQuestion(){
+    public List<Question> getAllQuestion(){
         return questionRepository.findAll();
     }
 
@@ -25,6 +25,7 @@ public class QuestionService {
          return questionRepository.save(question);
     }
 
+    @Transactional
     public Question updateQuestion(Question question){
         Optional<Question> optionalQuestion=questionRepository.findById(question.getId());
         if(!optionalQuestion.isPresent()){
@@ -32,4 +33,14 @@ public class QuestionService {
         }
          return  questionRepository.save(question);
     }
+
+    @Transactional
+    public void deleteQuestion(Long id){
+        Optional<Question> optionalQuestion=questionRepository.findById(id);
+        if(!optionalQuestion.isPresent()){
+            throw new NotFoundException("Question is not found!");
+        }
+        questionRepository.deleteById(id);
+    }
+
 }
