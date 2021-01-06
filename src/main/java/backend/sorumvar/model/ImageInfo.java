@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "IMAGE")
-public class ImageInfo {
+public class ImageInfo implements Model{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +41,5 @@ public class ImageInfo {
     public void setQuestion(Question question) {
         this.question = question;
     }
-
 
 }
